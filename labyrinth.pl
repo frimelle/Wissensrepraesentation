@@ -1,4 +1,4 @@
-r:-['/home/fuzzle/HTW/labyrith.pl'].
+r:-['/path/to/file/labyrinth.pl'].
 
 weg(3, 100).
 weg(100, 1).
