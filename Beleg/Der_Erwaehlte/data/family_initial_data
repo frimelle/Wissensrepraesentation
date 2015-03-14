@@ -1,0 +1,11 @@
+maennlich(wiligis).
+maennlich(grigorss).
+bruder(sibylla, wiligis).
+schwester(wiligis, sibylla).
+sohn(sibylla, grigorss).
+sohn(wiligis, grigorss).
+tochter(sibylla, herrad).
+tochter(grigorss, herrad).
+tochter(sibylla, humilitas).
+tochter(grigorss, humilitas).
+ehemann(sibylla,grigorss).
