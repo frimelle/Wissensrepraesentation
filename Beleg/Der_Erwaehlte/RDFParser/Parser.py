@@ -11,7 +11,7 @@ class Parser:
 
     def __init__(self, initial_data_file):
         if not os.path.isfile(initial_data_file):
-            raise "Error parsing initial data: File " + initial_data_file + " not found"
+            raise Exception("Error parsing initial data: File " + initial_data_file + " not found")
 
         self.relations = self.readInitialData(initial_data_file)
         self.triples = [ TurtleTriple("wt:", relation[0], relation[1], relation[2]) for relation in self.relations ]
@@ -63,7 +63,4 @@ class Parser:
             graph += str(triple)
         return graph
 
-parser = Parser("../data/family_initial_data")
-graphFile = open("../der_erwaehlte.ttl", "w")
-graphFile.write(parser.getGraph())
-graphFile.close()
+
