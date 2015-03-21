@@ -1,0 +1,49 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix wr: <http://github.com/frimelle/Wissensrepraesentation/>.
+@prefix wrp: <http://github.com/frimelle/Wissensrepraesentation/person>.
+@prefix wrr: <http://github.com/frimelle/Wissensrepraesentation/relation>.
+@base  <http://github.com/frimelle/Wissensrepraesentation/person>.
+
+
+wrp:?? rdf:type wr:person .
+
+:willigis a wr:person ;
+  wr:geschlecht wr:maennlich ;
+  wrr:bruder :sibylla .
+:sibylla a wr:person ;
+  wr:geschlecht wr:weiblich ;
+  wrr:schwester :wiligis ;
+  wrr:kinder _sk1 .
+  ### alternative zu dem wr:kinder _sk1 . wäre einfach: (beides Darstellung von RDF Collections)
+  #wrr:kinder (
+  # wrp:grigorss
+  # wrp:herrad
+  # wrp:humilitas
+  #) .
+
+_sk1
+  rdf:first wrp:grigorss ;
+  rdf:rest _sk2 .
+_sk2
+  rdf:first wrp:herrad ;
+  rdf:rest _sk3 .
+_sk3
+  rdf:first wrp:humilitas;
+  rdf:rest rdf:nill .
+
+:grigorss a wr:person ;
+  wr:geschlecht wr:maennlich ;
+  wrr:sohn :sibylla ;
+  wrr:sohn :wiligis ;
+  wrr:ehemann :sibylla .
+
+:herrad a  wr:person ;
+  wr:geschlecht weiblich .
+  wrr:tochter :sibylla ;
+  wrr:tochter :grigorss .
+
+:humilitas a wr:person ;
+  wr:geschlecht wr:weiblich ;
+  wr:tochter :sibylla ;
+  wrr:tochter :grigorss .
