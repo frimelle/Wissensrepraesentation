@@ -6,7 +6,30 @@
 @base  <http://github.com/frimelle/Wissensrepraesentation/person>.
 
 
-ex:person   rdf:type   rdfs:Class .
+### Metadata für die Datei, orientiert an die "Dublin Core Metadata Initiative"
+@prefix dc:  <http://purl.org/dc/elements/1.1/>.
+
+<http://www.dlib.org>
+    dc:title "Der Erwählte" ;
+    dc:creater [
+      a rdf:Bag; #doppelte Einträge möglich, Reihenfolge unwichtig
+      rdf:_1 "Lucie-Aimée Kaffee" ;
+      rdf:_2 "Simon Arnold" .
+    ] ;
+    dc:description """Umsetzung des Prolog Programmes in RDF und SPARQL""" ;
+    dc:date "2014-04-22" ;
+    dc:subject [
+         a rdf:Seq ; #doppelte Einträge möglich, Reihenfolge wichtig
+         rdf:_1 "Der Erwählte" ;
+         rdf:_2 "Familienbeziehungen" ;
+         rdf:_3 "Inzest" .
+    ];
+    dc:type "Test Daten" ;
+    dc:format "text/html" ;
+    dc:language "de" .
+
+### dieser Teil nur als Beispiel für die Benutzung von Klassen
+ex:person rdf:type rdfs:Class . #kann in turtle auch ersetzt werden durch: ex:person a rdfs:Class .
 ex:personW a rdfs:Class ;
   rdfs:subClassOf   ex:person .
 ex:personM a rdfs:Class ;
@@ -14,11 +37,11 @@ ex:personM a rdfs:Class ;
 
 :willigis a wr:personM ;
   #wr:geschlecht wr:maennlich ;
-  wrr:bruder :sibylla .
+  wrr:bruderVon :sibylla .
 
 :sibylla a wr:personW ;
   #wr:geschlecht wr:weiblich ;
-  wrr:schwester :wiligis ;
+  wrr:schwesterVon :wiligis ;
   wrr:kinder _sk1 .
   ### alternative zu dem wr:kinder _sk1 . wäre einfach: (beides Darstellung von RDF Collections)
   #wrr:kinder (
@@ -39,16 +62,54 @@ _sk3
 
 :grigorss a wr:personM ;
   #wr:geschlecht wr:maennlich ;
-  wrr:sohn :sibylla ;
-  wrr:sohn :wiligis ;
-  wrr:ehemann :sibylla .
+  wrr:sohnVon :sibylla ;
+  wrr:sohnVon :wiligis ;
+  wrr:ehemannVon :sibylla .
+
+#mögliche Darstellungen der Verwandtschaftsverhältnisse von grigorss mit blank nodes
+#:grigorss wrr:beziehungen _:grigorossBez.
+#_:grigorossBez
+#  wrr:sohnVon :sibylla ;
+#  wrr:sohnVon :wiligis ;
+#  wrr:ehemannVon :sibylla .
 
 :herrad a  wr:personW ;
   #wr:geschlecht weiblich .
-  wrr:tochter :sibylla ;
-  wrr:tochter :grigorss .
+  wrr:tochterVon :sibylla ;
+  wrr:tochterVon :grigorss .
 
 :humilitas a wr:personW ;
   #wr:geschlecht wr:weiblich ;
-  wr:tochter :sibylla ;
-  wrr:tochter :grigorss .
+  wr:tochterVon :sibylla ;
+  wrr:tochterVon :grigorss .
+
+### ausprobieren der komplizierteren verhältnisse
+
+### base1/tante
+_:a rdf:type wr:personW; # hier wird mit verschachtelten, unbennanten/unlabeled blank nodes gearbeitet ( http://www.w3.org/TR/turtle/#unlabeled-bnodes )
+  wrr:base1 [ wrr:tochter [ wrr:schwesterVon _:a ] ] .
+_:a rdf:type wr:personW;
+    wrr:base1 [ wrr:sohn [ wrr:bruderVon _:a ] ] .
+
+### einige Properties weiter definiert
+wrr:mutterVon a rdfs:Property ; #nicht benutzt
+  rdfs:range   wr:personW ;
+  rdfs:range   wr:person ; #rdfs:range wr:person sollte durch die subClassOf unnötig sein
+  rdfs:domain wr:person .
+
+wrr:tochterVon rdf:type rdfs:Property ;
+  rdfs:range wr:personW .
+  rdfs:domain wr:person . #während wir festlegen, dass die Tochter (das Subjekt) weiblich sein muss,
+                          # ist das Objekt hiermit erstmal nur festgelegt als Person.
+
+wrr:sohnVon rdf:type rdfs:Propery ;
+  rdf:range wr:personM .
+  rdfs:domain wr:person .
+
+wrr:bruderVon a rdfs:Property ;
+    rdfs:domain wr:personM .
+    rdfs:range wr:person .
+
+wrr:schwesterVon a rdfs:Property ;
+  rdfs:domain wr:personW .
+  rdfs:range wr:person .
