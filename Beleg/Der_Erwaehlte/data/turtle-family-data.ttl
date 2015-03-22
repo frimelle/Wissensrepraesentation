@@ -6,13 +6,18 @@
 @base  <http://github.com/frimelle/Wissensrepraesentation/person>.
 
 
-wrp:?? rdf:type wr:person .
+ex:person   rdf:type   rdfs:Class .
+ex:personW a rdfs:Class ;
+  rdfs:subClassOf   ex:person .
+ex:personM a rdfs:Class ;
+  rdfs:subClassOf   ex:person .
 
-:willigis a wr:person ;
-  wr:geschlecht wr:maennlich ;
+:willigis a wr:personM ;
+  #wr:geschlecht wr:maennlich ;
   wrr:bruder :sibylla .
-:sibylla a wr:person ;
-  wr:geschlecht wr:weiblich ;
+
+:sibylla a wr:personW ;
+  #wr:geschlecht wr:weiblich ;
   wrr:schwester :wiligis ;
   wrr:kinder _sk1 .
   ### alternative zu dem wr:kinder _sk1 . wäre einfach: (beides Darstellung von RDF Collections)
@@ -32,18 +37,18 @@ _sk3
   rdf:first wrp:humilitas;
   rdf:rest rdf:nill .
 
-:grigorss a wr:person ;
-  wr:geschlecht wr:maennlich ;
+:grigorss a wr:personM ;
+  #wr:geschlecht wr:maennlich ;
   wrr:sohn :sibylla ;
   wrr:sohn :wiligis ;
   wrr:ehemann :sibylla .
 
-:herrad a  wr:person ;
-  wr:geschlecht weiblich .
+:herrad a  wr:personW ;
+  #wr:geschlecht weiblich .
   wrr:tochter :sibylla ;
   wrr:tochter :grigorss .
 
-:humilitas a wr:person ;
-  wr:geschlecht wr:weiblich ;
+:humilitas a wr:personW ;
+  #wr:geschlecht wr:weiblich ;
   wr:tochter :sibylla ;
   wrr:tochter :grigorss .
