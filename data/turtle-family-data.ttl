@@ -39,7 +39,7 @@ wrp:willigis a wr:personM ;
 wrp:sibylla a wr:personW ;
   #wr:geschlecht wr:weiblich ;
   wrr:schwesterVon wrp:wiligis ;
-  ### kinder als blank nodes ???
+  ### kinder als collection
   wrr:kinder _:sk1.
 _:sk1
   rdf:first wrp:grigorss ;
