@@ -1,4 +1,0 @@
-@prefix wt: <http://github.com/frimelle/Wissensrepraesentation/>.
-
-wt:Willigis wt:Geschlecht maennlich .
-wt:Wiligis wt:Bruder Sibylla . 
