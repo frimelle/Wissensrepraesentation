@@ -30,7 +30,7 @@ def turtleStr(prefix, praedikat, objekt, subjekt):
     if praedikat is "a":
         tstring += praedikat
     else:
-        tstring += prefix + praedikat
+        tstring += prefix + praedikat + "Von"
     tstring += " "
     tstring += prefix + objekt
     tstring += " . \n"
@@ -42,7 +42,7 @@ def writeFile( filepath, graph ):
     f.close
 
 # den Prefix setzten um für das turtle Dokument
-wrPrefix = "@prefix wr: <http://github.com/frimelle/Wissensrepraesentation/person/> ."
+wrPrefix = "@prefix wrp: <http://github.com/frimelle/Wissensrepraesentation/person/> ."
 wrrPrefix = "@prefix wrr: <http://github.com/frimelle/Wissensrepraesentation/relation/> ."
 prefix = "wrp:"
 prefixr = "wrr:"

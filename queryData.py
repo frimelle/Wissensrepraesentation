@@ -31,7 +31,11 @@ nichte_query = """
         WHERE { { ?kind wrr:bruderVon ?geschwister . } UNION { ?kind wrr:schwesterVon ?geschwister . }
                 {?nichte wrr:tochterVon ?geschwister . }}
 """
-
+ehemann_query = """
+        PREFIX wrr: <http://github.com/frimelle/Wissensrepraesentation/relation/>
+        SELECT *
+        WHERE { { ?nichte wrr:ehemannVon ?kind . } }
+"""
 def queryData( sparql_query ):
     try:
         sparql = SPARQLWrapper("http://localhost:8000/sparql/")
@@ -61,3 +65,8 @@ for result in results_cousin["results"]["bindings"]:
 results_nichte = queryData( nichte_query )
 for result in results_nichte["results"]["bindings"]:
     print result["nichte"]['value'] + " nichte von " + result["kind"]['value']
+
+### Query nach Ehemann
+results_ehemann = queryData( ehemann_query )
+for result in results_ehemann["results"]["bindings"]:
+    print result["nichte"]['value'] + " ehemann von " + result["kind"]['value']

@@ -1,8 +1,8 @@
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
-@prefix wr: <http://github.com/frimelle/Wissensrepraesentation/>.
-@prefix wrp: <http://github.com/frimelle/Wissensrepraesentation/person/>.
-@prefix wrr: <http://github.com/frimelle/Wissensrepraesentation/relation/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix wr: <http://github.com/frimelle/Wissensrepraesentation/> .
+@prefix wrp: <http://github.com/frimelle/Wissensrepraesentation/person/> .
+@prefix wrr: <http://github.com/frimelle/Wissensrepraesentation/relation/> .
 
 
 ### Metadata für die Datei, orientiert an die "Dublin Core Metadata Initiative"
