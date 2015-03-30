@@ -10,11 +10,7 @@
 
 <http://www.dlib.org>
     dc:title "Der Erwählte" ;
-    dc:creater [
-      a rdf:Bag; #doppelte Einträge möglich, Reihenfolge unwichtig
-      rdf:_1 "Lucie-Aimée Kaffee"
-      rdf_2 "test"
-    ] ;
+    dc:creater "Lucie-Aimée Kaffee" ;
     dc:description """Umsetzung des Prolog Programmes in RDF und SPARQL""" ;
     dc:date "2014-04-22" ;
     dc:subject [
