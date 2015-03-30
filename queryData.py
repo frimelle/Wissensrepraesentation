@@ -29,7 +29,7 @@ nichte_query = """
         PREFIX wrr: <http://github.com/frimelle/Wissensrepraesentation/relation/>
         SELECT *
         WHERE { { ?kind wrr:bruderVon ?geschwister . } UNION { ?kind wrr:schwesterVon ?geschwister . }
-                {?nichte wrr:tochtervon ?geschwister . }}
+                {?nichte wrr:tochterVon ?geschwister . }}
 """
 
 def queryData( sparql_query ):
@@ -59,6 +59,5 @@ for result in results_cousin["results"]["bindings"]:
 
 ### Query nach Nichte
 results_nichte = queryData( nichte_query )
-print results_nichte
 for result in results_nichte["results"]["bindings"]:
     print result["nichte"]['value'] + " nichte von " + result["kind"]['value']

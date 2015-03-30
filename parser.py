@@ -20,13 +20,13 @@ def parseLine(line):
         parameter = [ praedikat ] + parameter
         praedikat = "a"
 
-    #relation =  praedikat + ' ' + ' '.join(parameter)
     relation = [ praedikat ] + parameter
     return relation
 
 def turtleStr(prefix, praedikat, objekt, subjekt):
-    tstring = prefix + subjekt
+    tstring = prefixr + subjekt
     tstring += " "
+    # für das a als rdf:typ  wird kein Prefix benötigt
     if praedikat is "a":
         tstring += praedikat
     else:
@@ -41,14 +41,16 @@ def writeFile( filepath, graph ):
     f.write( graph )
     f.close
 
-# set the prefix for the turtle file
-wrPrefix = "@prefix wr: <http://github.com/frimelle/Wissensrepraesentation/> ."
-prefix = "wr:"
+# den Prefix setzten um für das turtle Dokument
+wrPrefix = "@prefix wr: <http://github.com/frimelle/Wissensrepraesentation/person/> ."
+wrrPrefix = "@prefix wrr: <http://github.com/frimelle/Wissensrepraesentation/relation/> ."
+prefix = "wrp:"
+prefixr = "wrr:"
 
 path = os.path.join( os.getcwd() + "/data/family_initial_data" )
 writepath = os.path.join( os.getcwd() + "/data/family_data_script.ttl" )
 
-graph = wrPrefix + "\n"
+graph = wrPrefix + "\n" + wrrPrefix + "\n"
 
 file = open(path, 'r')
 for line in file:
