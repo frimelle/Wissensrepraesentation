@@ -64,8 +64,8 @@ wrp:grigorss a wr:personM ;
   wrr:ehemannVon wrp:sibylla .
 
 ### mögliche Darstellungen der Verwandtschaftsverhältnisse von grigorss mit blank nodes
-#wrp:grigorss wrr:beziehungen _:grigorossBez.
-#_:grigorossBez
+#wrp:grigorss wrr:beziehungen _:grigorssBez.
+#_:grigorssBez
 #  wrr:sohnVon wrp:sibylla ;
 #  wrr:sohnVon wrp:wiligis ;
 #  wrr:ehemannVon wrp:sibylla .

@@ -24,13 +24,13 @@ def parseLine(line):
     return relation
 
 def turtleStr(prefix, praedikat, objekt, subjekt):
-    tstring = prefixr + subjekt
+    tstring = prefix + subjekt
     tstring += " "
     # für das a als rdf:typ  wird kein Prefix benötigt
     if praedikat is "a":
         tstring += praedikat
     else:
-        tstring += prefix + praedikat + "Von"
+        tstring += prefixr + praedikat + "Von"
     tstring += " "
     tstring += prefix + objekt
     tstring += " . \n"
